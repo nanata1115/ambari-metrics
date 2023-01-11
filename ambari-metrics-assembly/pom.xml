@@ -247,6 +247,8 @@
                             <exclude>*tests.jar</exclude>
                             <exclude>findbugs*.jar</exclude>
                             <exclude>jdk.tools*.jar</exclude>
+                            <exclude>jakarta.ws.rs-api-2.1.6.jar</exclude>
+                            <exclude>jsr311-api-1.1.1.jar</exclude>
                           </excludes>
                         </source>
                         <source>
