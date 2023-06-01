@@ -199,6 +199,8 @@
             <configuration>
               <group>Development</group>
               <needarch>x86_64</needarch>
+              <targetOS>linux</targetOS>
+              <targetVendor>rh</targetVendor>
               <license>2012, Apache Software Foundation</license>
               <version>${project.version}</version>
               <release>${release.version}</release>
