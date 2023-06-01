@@ -28,8 +28,8 @@ import org.apache.ambari.metrics.core.timeline.discovery.TimelineMetricMetadataM
 import org.apache.ambari.metrics.core.timeline.query.Condition;
 import org.apache.ambari.metrics.core.timeline.query.DefaultCondition;
 import org.apache.ambari.metrics.core.timeline.query.PhoenixTransactSQL;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.metrics2.sink.timeline.MetricHostAggregate;
 import org.apache.hadoop.metrics2.sink.timeline.TimelineMetric;
@@ -39,7 +39,7 @@ import org.apache.ambari.metrics.core.timeline.availability.AggregationTaskRunne
 import static org.apache.ambari.metrics.core.timeline.query.PhoenixTransactSQL.GET_METRIC_AGGREGATE_ONLY_SQL;
 
 public class TimelineMetricHostAggregator extends AbstractTimelineAggregator {
-  private static final Log LOG = LogFactory.getLog(TimelineMetricHostAggregator.class);
+  private static final Logger LOG = LoggerFactory.getLogger(TimelineMetricHostAggregator.class);
   TimelineMetricReadHelper readHelper;
 
   public TimelineMetricHostAggregator(AGGREGATOR_NAME aggregatorName,

@@ -24,8 +24,8 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.metrics2.sink.timeline.Precision;
 import org.apache.ambari.metrics.core.timeline.PhoenixHBaseAccessor;
 
@@ -48,7 +48,7 @@ public class DefaultCondition implements Condition {
   boolean uuidNotCondition = false;
   List<byte[]> uuids = new ArrayList<>();
 
-  private static final Log LOG = LogFactory.getLog(DefaultCondition.class);
+  private static final Logger LOG = LoggerFactory.getLogger(DefaultCondition.class);
 
   public DefaultCondition(List<String> metricNames, List<String> hostnames, String appId,
                           String instanceId, Long startTime, Long endTime, Precision precision,

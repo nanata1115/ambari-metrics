@@ -22,8 +22,8 @@ import org.apache.ambari.metrics.core.timeline.discovery.TimelineMetricHostMetad
 import org.apache.ambari.metrics.core.timeline.discovery.TimelineMetricMetadataKey;
 import org.apache.ambari.metrics.core.timeline.discovery.TimelineMetricMetadataManager;
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.metrics2.sink.timeline.MetricClusterAggregate;
 import org.apache.hadoop.metrics2.sink.timeline.TimelineMetric;
@@ -74,8 +74,8 @@ import static org.apache.ambari.metrics.core.timeline.aggregators.AggregatorUtil
 import static org.apache.hadoop.metrics2.sink.timeline.TimelineMetricUtils.getJavaMetricPatterns;
 
 public class TimelineMetricsIgniteCache implements TimelineMetricDistributedCache {
-  private static final Log LOG =
-      LogFactory.getLog(TimelineMetricsIgniteCache.class);
+  private static final Logger LOG =
+      LoggerFactory.getLogger(TimelineMetricsIgniteCache.class);
   private IgniteCache<TimelineClusterMetric, MetricClusterAggregate> igniteCache;
   private long cacheSliceIntervalMillis;
   private boolean interpolationEnabled;

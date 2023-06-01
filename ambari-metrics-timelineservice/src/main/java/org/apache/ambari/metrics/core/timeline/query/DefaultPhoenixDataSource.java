@@ -23,15 +23,15 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.client.ConnectionFactory;
 import org.apache.hadoop.hbase.client.HBaseAdmin;
 
 public class DefaultPhoenixDataSource implements PhoenixConnectionProvider {
 
-  static final Log LOG = LogFactory.getLog(DefaultPhoenixDataSource.class);
+  static final Logger LOG = LoggerFactory.getLogger(DefaultPhoenixDataSource.class);
   private static final String ZOOKEEPER_CLIENT_PORT = "hbase.zookeeper.property.clientPort";
   private static final String ZOOKEEPER_QUORUM = "hbase.zookeeper.quorum";
   private static final String ZNODE_PARENT = "zookeeper.znode.parent";

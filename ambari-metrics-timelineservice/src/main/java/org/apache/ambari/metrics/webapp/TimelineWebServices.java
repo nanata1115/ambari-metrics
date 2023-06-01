@@ -50,8 +50,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import org.apache.ambari.metrics.core.timeline.TimelineMetricServiceSummary;
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.classification.InterfaceAudience.Public;
 import org.apache.hadoop.classification.InterfaceStability.Unstable;
 import org.apache.hadoop.metrics2.sink.timeline.AggregationResult;
@@ -76,7 +76,7 @@ import com.google.inject.Singleton;
 @Singleton
 @Path("/ws/v1/timeline")
 public class TimelineWebServices {
-  private static final Log LOG = LogFactory.getLog(TimelineWebServices.class);
+  private static final Logger LOG = LoggerFactory.getLogger(TimelineWebServices.class);
   
   private TimelineMetricStore timelineMetricStore;
   private static final String SMOKETEST_METRIC_APP_ID = "amssmoketestfake";

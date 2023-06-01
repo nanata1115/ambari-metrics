@@ -131,8 +131,8 @@ import org.apache.ambari.metrics.core.timeline.source.InternalSourceProvider;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.DoNotRetryIOException;
 import org.apache.hadoop.hbase.TableName;
@@ -166,7 +166,7 @@ import com.google.common.collect.Multimap;
  * Provides a facade over the Phoenix API to access HBase schema
  */
 public class PhoenixHBaseAccessor {
-  private static final Log LOG = LogFactory.getLog(PhoenixHBaseAccessor.class);
+  private static final Logger LOG = LoggerFactory.getLogger(PhoenixHBaseAccessor.class);
 
   static final int PHOENIX_MAX_MUTATION_STATE_SIZE = 50000;
 
@@ -1025,7 +1025,7 @@ public class PhoenixHBaseAccessor {
       if (className != null && className.equals("TimeRange")) {
         // This is "maxStamp is smaller than minStamp" exception
         // Log error and return empty metrics
-        LOG.debug(io);
+        LOG.debug(String.valueOf(io));
         return new TimelineMetrics();
       } else {
         throw ex;
@@ -1407,7 +1407,7 @@ public class PhoenixHBaseAccessor {
         try {
           stmt.executeUpdate();
         } catch (SQLException sql) {
-          LOG.error(sql);
+          LOG.error(String.valueOf(sql));
         }
 
         if (rowCount >= PHOENIX_MAX_MUTATION_STATE_SIZE - 1) {
@@ -1503,7 +1503,7 @@ public class PhoenixHBaseAccessor {
           stmt.executeUpdate();
         } catch (SQLException sql) {
           // we have no way to verify it works!!!
-          LOG.error(sql);
+          LOG.error(String.valueOf(sql));
         }
 
         if (rowCount >= PHOENIX_MAX_MUTATION_STATE_SIZE - 1) {
@@ -1593,7 +1593,7 @@ public class PhoenixHBaseAccessor {
           stmt.executeUpdate();
         } catch (SQLException sql) {
           // we have no way to verify it works!!!
-          LOG.error(sql);
+          LOG.error(String.valueOf(sql));
         }
 
         if (rowCount >= PHOENIX_MAX_MUTATION_STATE_SIZE - 1) {

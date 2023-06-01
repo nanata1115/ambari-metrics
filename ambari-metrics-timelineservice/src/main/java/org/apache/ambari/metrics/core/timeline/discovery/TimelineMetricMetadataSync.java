@@ -24,15 +24,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.metrics2.sink.timeline.TimelineMetricMetadata;
 
 /**
  * Sync metadata info with the store
  */
 public class TimelineMetricMetadataSync implements Runnable {
-  private static final Log LOG = LogFactory.getLog(TimelineMetricMetadataSync.class);
+  private static final Logger LOG = LoggerFactory.getLogger(TimelineMetricMetadataSync.class);
 
   private final TimelineMetricMetadataManager cacheManager;
 

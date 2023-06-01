@@ -23,8 +23,8 @@ import java.util.concurrent.Future;
 
 import org.apache.ambari.metrics.core.timeline.TimelineMetricConfiguration;
 import org.apache.ambari.metrics.core.timeline.source.InternalSourceProvider;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.metrics2.sink.timeline.TimelineMetrics;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
@@ -50,7 +50,7 @@ import static org.apache.ambari.metrics.core.timeline.TimelineMetricConfiguratio
  */
 public class KafkaSinkProvider implements ExternalSinkProvider {
   private static String TOPIC_NAME = "ambari-metrics-topic";
-  private static final Log LOG = LogFactory.getLog(KafkaSinkProvider.class);
+  private static final Logger LOG = LoggerFactory.getLogger(KafkaSinkProvider.class);
 
   private Producer producer;
   private int TIMEOUT_SECONDS = 10;

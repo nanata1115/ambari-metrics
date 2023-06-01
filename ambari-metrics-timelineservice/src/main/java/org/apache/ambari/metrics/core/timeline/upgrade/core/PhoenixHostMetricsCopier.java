@@ -18,8 +18,8 @@
 package org.apache.ambari.metrics.core.timeline.upgrade.core;
 
 import org.apache.ambari.metrics.core.timeline.PhoenixHBaseAccessor;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.metrics2.sink.timeline.MetricHostAggregate;
 import org.apache.hadoop.metrics2.sink.timeline.TimelineMetric;
 
@@ -32,7 +32,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class PhoenixHostMetricsCopier extends AbstractPhoenixMetricsCopier {
-  private static final Log LOG = LogFactory.getLog(PhoenixHostMetricsCopier.class);
+  private static final Logger LOG = LoggerFactory.getLogger(PhoenixHostMetricsCopier.class);
   private final Map<TimelineMetric, MetricHostAggregate> aggregateMap = new HashMap<>();
 
   PhoenixHostMetricsCopier(String inputTableName, String outputTableName, PhoenixHBaseAccessor hBaseAccessor, Set<String> metricNames, long startTime, Writer processedMetricsFileWriter) {

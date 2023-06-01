@@ -27,8 +27,8 @@ import java.util.TreeMap;
 
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.metrics2.sink.timeline.PostProcessingUtil;
 import org.apache.hadoop.metrics2.sink.timeline.TimelineMetric;
 
@@ -37,7 +37,7 @@ import org.apache.hadoop.metrics2.sink.timeline.TimelineMetric;
  */
 public class AggregatorUtils {
 
-  private static final Log LOG = LogFactory.getLog(AggregatorUtils.class);
+  private static final Logger LOG = LoggerFactory.getLogger(AggregatorUtils.class);
 
   public static double[] calculateAggregates(Map<Long, Double> metricValues) {
     double[] values = new double[4];

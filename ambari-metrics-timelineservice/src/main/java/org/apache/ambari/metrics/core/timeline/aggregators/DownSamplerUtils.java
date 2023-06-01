@@ -24,8 +24,8 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.conf.Configuration;
 
 /**
@@ -39,7 +39,7 @@ public class DownSamplerUtils {
   public static final String downSamplerMetricPatternsConfig = "metric.patterns";
   public static final String topNDownSamplerKey = "topn";
   public static final String eventDownSamplerKey = "event";
-  private static final Log LOG = LogFactory.getLog(DownSamplerUtils.class);
+  private static final Logger LOG = LoggerFactory.getLogger(DownSamplerUtils.class);
 
 
 

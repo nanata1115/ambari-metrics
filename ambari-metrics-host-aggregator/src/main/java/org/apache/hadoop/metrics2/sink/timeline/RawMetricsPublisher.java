@@ -18,19 +18,19 @@
 package org.apache.hadoop.metrics2.sink.timeline;
 
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.metrics2.host.aggregator.TimelineMetricsHolder;
 
 import java.util.Map;
 
 public class RawMetricsPublisher extends AbstractMetricPublisher {
-    private final Log LOG;
+    private final Logger LOG;
 
     public RawMetricsPublisher(TimelineMetricsHolder timelineMetricsHolder, Configuration configuration, int interval) {
         super(timelineMetricsHolder, configuration, interval);
-        LOG = LogFactory.getLog(this.getClass());
+        LOG = LoggerFactory.getLogger(this.getClass());
     }
 
 

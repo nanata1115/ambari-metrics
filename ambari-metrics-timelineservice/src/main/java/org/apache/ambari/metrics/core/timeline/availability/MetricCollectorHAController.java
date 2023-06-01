@@ -32,8 +32,8 @@ import java.util.concurrent.TimeUnit;
 
 import org.I0Itec.zkclient.exception.ZkNoNodeException;
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.ambari.metrics.core.timeline.MetricsSystemInitializationException;
 import org.apache.ambari.metrics.core.timeline.TimelineMetricConfiguration;
 import org.apache.helix.HelixAdmin;
@@ -54,7 +54,7 @@ import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Joiner;
 
 public class MetricCollectorHAController {
-  private static final Log LOG = LogFactory.getLog(MetricCollectorHAController.class);
+  private static final Logger LOG = LoggerFactory.getLogger(MetricCollectorHAController.class);
 
   @VisibleForTesting
   static final String CLUSTER_NAME = "ambari-metrics-cluster";
@@ -145,7 +145,7 @@ public class MetricCollectorHAController {
           LOG.info(String.format("Waiting for %d seconds and retrying.", sleepTimeInSeconds));
           TimeUnit.SECONDS.sleep(sleepTimeInSeconds);
         } else {
-          LOG.error(ex);
+          LOG.error(String.valueOf(ex));
         }
       }
     }

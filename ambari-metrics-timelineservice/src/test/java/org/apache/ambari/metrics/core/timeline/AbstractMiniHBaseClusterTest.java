@@ -41,8 +41,8 @@ import java.util.Properties;
 
 import javax.annotation.Nonnull;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseTestingUtility;
 import org.apache.hadoop.hbase.HConstants;
@@ -55,7 +55,6 @@ import org.apache.ambari.metrics.core.timeline.discovery.TimelineMetricMetadataM
 import org.apache.ambari.metrics.core.timeline.query.PhoenixConnectionProvider;
 import org.apache.hadoop.yarn.util.timeline.TimelineUtils;
 import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
 import org.apache.phoenix.hbase.index.write.IndexWriterUtils;
 import org.apache.phoenix.query.BaseTest;
 import org.apache.phoenix.query.QueryServices;
@@ -75,10 +74,10 @@ public abstract class AbstractMiniHBaseClusterTest extends BaseTest {
   protected TimelineMetricMetadataManager metadataManager;
   private static StandaloneHBaseTestingUtility utility;
 
-  public final Log LOG;
+  public final org.slf4j.Logger LOG;
 
   public AbstractMiniHBaseClusterTest() {
-    LOG = LogFactory.getLog(this.getClass());
+    LOG = LoggerFactory.getLogger(this.getClass());
   }
 
 
@@ -272,7 +271,7 @@ public abstract class AbstractMiniHBaseClusterTest extends BaseTest {
             try {
               return driver.getConnectionQueryServices(null, null).getAdmin();
             } catch (SQLException e) {
-              LOG.error(e);
+              LOG.error(String.valueOf(e));
             }
             return null;
           }
@@ -335,7 +334,7 @@ public abstract class AbstractMiniHBaseClusterTest extends BaseTest {
           int row = metricRecordStmt.executeUpdate();
           LOG.info("Inserted " + row + " rows.");
         } catch (SQLException sql) {
-          LOG.error(sql);
+          LOG.error(String.valueOf(sql));
         }
       }
 

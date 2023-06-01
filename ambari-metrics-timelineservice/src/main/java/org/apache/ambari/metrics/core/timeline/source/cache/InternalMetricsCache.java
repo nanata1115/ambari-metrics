@@ -25,8 +25,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.metrics2.sink.timeline.TimelineMetric;
 import org.apache.hadoop.metrics2.sink.timeline.TimelineMetrics;
 
@@ -42,7 +42,7 @@ import net.sf.ehcache.event.CacheEventListener;
 import net.sf.ehcache.store.MemoryStoreEvictionPolicy;
 
 public class InternalMetricsCache {
-  private static final Log LOG = LogFactory.getLog(InternalMetricsCache.class);
+  private static final Logger LOG = LoggerFactory.getLogger(InternalMetricsCache.class);
   private final String instanceName;
   private final String maxHeapPercent;
   private volatile boolean isCacheInitialized = false;

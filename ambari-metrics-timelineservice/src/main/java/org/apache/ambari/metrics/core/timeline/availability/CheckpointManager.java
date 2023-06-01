@@ -17,8 +17,8 @@
  */
 package org.apache.ambari.metrics.core.timeline.availability;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.helix.AccessOption;
 import org.apache.helix.store.zk.ZkHelixPropertyStore;
 import org.apache.helix.zookeeper.datamodel.ZNRecord;
@@ -27,7 +27,7 @@ import org.apache.zookeeper.data.Stat;
 
 public class CheckpointManager {
   private final ZkHelixPropertyStore<ZNRecord> propertyStore;
-  private static final Log LOG = LogFactory.getLog(CheckpointManager.class);
+  private static final Logger LOG = LoggerFactory.getLogger(CheckpointManager.class);
 
   static final String ZNODE_FIELD = "checkpoint";
   static final String CHECKPOINT_PATH_PREFIX = "CHECKPOINTS";

@@ -17,8 +17,8 @@
  */
 package org.apache.hadoop.metrics2.sink.timeline;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.metrics2.host.aggregator.TimelineMetricsHolder;
 
@@ -40,7 +40,7 @@ public abstract class AbstractMetricPublisher extends AbstractTimelineMetricsSin
     private static final String PUBLISHER_HOSTNAME_PROPERTY = "timeline.metrics.hostname";
     protected static String BASE_POST_URL = "%s://%s:%s/ws/v1/timeline/metrics";
     protected int publishIntervalInSeconds;
-    private Log LOG;
+    private Logger LOG;
     protected TimelineMetricsHolder timelineMetricsHolder;
     protected Configuration configuration;
     private String collectorProtocol;
@@ -50,7 +50,7 @@ public abstract class AbstractMetricPublisher extends AbstractTimelineMetricsSin
     private String zkQuorum;
 
     public AbstractMetricPublisher(TimelineMetricsHolder timelineMetricsHolder, Configuration configuration, int publishIntervalInSeconds) {
-        LOG = LogFactory.getLog(this.getClass());
+        LOG = LoggerFactory.getLogger(this.getClass());
         this.configuration = configuration;
         this.publishIntervalInSeconds = publishIntervalInSeconds;
         this.timelineMetricsHolder = timelineMetricsHolder;

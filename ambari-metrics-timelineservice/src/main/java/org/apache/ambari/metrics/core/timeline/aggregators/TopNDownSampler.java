@@ -28,14 +28,14 @@ import java.util.Map;
 
 import org.apache.ambari.metrics.core.timeline.query.TopNCondition;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.metrics2.sink.timeline.TopNConfig;
 
 public class TopNDownSampler implements CustomDownSampler {
 
   private TopNConfig topNConfig;
-  private static final Log LOG = LogFactory.getLog(TopNDownSampler.class);
+  private static final Logger LOG = LoggerFactory.getLogger(TopNDownSampler.class);
   protected String metricPatterns;
 
   public static TopNDownSampler fromConfig(Map<String, String> conf) {

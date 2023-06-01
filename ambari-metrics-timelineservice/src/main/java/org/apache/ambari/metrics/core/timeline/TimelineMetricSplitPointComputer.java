@@ -21,8 +21,8 @@ package org.apache.ambari.metrics.core.timeline;
 import org.apache.ambari.metrics.core.timeline.aggregators.TimelineClusterMetric;
 import org.apache.ambari.metrics.core.timeline.discovery.TimelineMetricMetadataManager;
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.conf.Configuration;
 
 import java.io.BufferedReader;
@@ -39,7 +39,7 @@ import static org.apache.ambari.metrics.core.timeline.TimelineMetricConfiguratio
 
 public class TimelineMetricSplitPointComputer {
 
-  private static final Log LOG = LogFactory.getLog(TimelineMetricSplitPointComputer.class);
+  private static final Logger LOG = LoggerFactory.getLogger(TimelineMetricSplitPointComputer.class);
   private Set<String> masterComponents = new HashSet<>();
   private Set<String> slaveComponents = new HashSet<>();
 
@@ -161,7 +161,7 @@ public class TimelineMetricSplitPointComputer {
       }
     } catch (Exception e) {
       LOG.info("Error reading split point candidate metrics for component : " + component);
-      LOG.error(e);
+      LOG.error(String.valueOf(e));
     }
 
     if (isSlave) {

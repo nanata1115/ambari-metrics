@@ -30,8 +30,8 @@ import org.apache.ambari.metrics.core.timeline.discovery.TimelineMetricHostMetad
 import org.apache.ambari.metrics.core.timeline.discovery.TimelineMetricMetadataKey;
 import org.apache.ambari.metrics.core.timeline.discovery.TimelineMetricMetadataManager;
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.metrics2.sink.timeline.MetricClusterAggregate;
 import org.apache.hadoop.metrics2.sink.timeline.TimelineMetricMetadata;
@@ -46,7 +46,7 @@ import static org.apache.ambari.metrics.core.timeline.TimelineMetricConfiguratio
  * @TimelineMetricAppAggregator and provide the raw data to aggregate.
  */
 public class TimelineMetricAppAggregator {
-  private static final Log LOG = LogFactory.getLog(TimelineMetricAppAggregator.class);
+  private static final Logger LOG = LoggerFactory.getLogger(TimelineMetricAppAggregator.class);
   // Lookup to check candidacy of an app
   private final List<String> appIdsToAggregate;
   private final Map<String, TimelineMetricHostMetadata> hostMetadata;

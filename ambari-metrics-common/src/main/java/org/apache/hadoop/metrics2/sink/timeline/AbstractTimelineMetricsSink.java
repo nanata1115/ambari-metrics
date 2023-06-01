@@ -26,8 +26,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.metrics2.sink.timeline.availability.MetricCollectorHAHelper;
 import org.apache.hadoop.metrics2.sink.timeline.availability.MetricCollectorUnavailableException;
 import org.apache.hadoop.metrics2.sink.timeline.availability.MetricSinkWriteShardHostnameHashingStrategy;
@@ -107,7 +107,7 @@ public abstract class AbstractTimelineMetricsSink {
   private SSLSocketFactory sslSocketFactory;
   private AppCookieManager appCookieManager = null;
 
-  protected final Log LOG;
+  protected final Logger LOG;
 
   protected static ObjectMapper mapper;
 
@@ -165,7 +165,7 @@ public abstract class AbstractTimelineMetricsSink {
   }
 
   public AbstractTimelineMetricsSink() {
-    LOG = LogFactory.getLog(this.getClass());
+    LOG = LoggerFactory.getLogger(this.getClass());
   }
 
   /**
@@ -250,9 +250,9 @@ public abstract class AbstractTimelineMetricsSink {
 
       if (failedCollectorConnectionsCounter.getAndIncrement() == 0) {
         if (LOG.isDebugEnabled()) {
-          LOG.debug(errorMessage, ioe);
+          LOG.debug(String.valueOf(errorMessage), ioe);
         } else {
-          LOG.info(errorMessage);
+          LOG.info(String.valueOf(errorMessage));
         }
         throw new UnableToConnectException(ioe).setConnectUrl(connectUrl);
       } else {
@@ -668,8 +668,8 @@ public abstract class AbstractTimelineMetricsSink {
       } catch (IOException e) {
         //NOP
       }
-      LOG.debug(errorMessage);
-      LOG.debug(ioe);
+      LOG.debug(String.valueOf(errorMessage));
+      LOG.debug(String.valueOf(ioe));
       String warnMsg = "Unable to connect to collector to find live nodes.";
       throw new MetricCollectorUnavailableException(warnMsg);
     }

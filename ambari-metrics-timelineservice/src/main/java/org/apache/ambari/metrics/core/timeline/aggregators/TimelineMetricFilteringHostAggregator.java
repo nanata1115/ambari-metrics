@@ -27,15 +27,15 @@ import org.apache.ambari.metrics.core.timeline.availability.MetricCollectorHACon
 import org.apache.ambari.metrics.core.timeline.discovery.TimelineMetricMetadataManager;
 import org.apache.ambari.metrics.core.timeline.query.Condition;
 import org.apache.ambari.metrics.core.timeline.query.DefaultCondition;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.ambari.metrics.core.timeline.PhoenixHBaseAccessor;
 
 import static org.apache.ambari.metrics.core.timeline.query.PhoenixTransactSQL.GET_METRIC_AGGREGATE_ONLY_SQL;
 
 public class TimelineMetricFilteringHostAggregator extends TimelineMetricHostAggregator {
-  private static final Log LOG = LogFactory.getLog(TimelineMetricFilteringHostAggregator.class);
+  private static final Logger LOG = LoggerFactory.getLogger(TimelineMetricFilteringHostAggregator.class);
   private TimelineMetricMetadataManager metricMetadataManager;
   private ConcurrentHashMap<String, Long> postedAggregatedMap;
 

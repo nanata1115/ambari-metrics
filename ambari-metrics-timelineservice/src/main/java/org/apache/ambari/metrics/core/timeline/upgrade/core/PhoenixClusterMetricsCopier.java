@@ -19,8 +19,8 @@ package org.apache.ambari.metrics.core.timeline.upgrade.core;
 
 import org.apache.ambari.metrics.core.timeline.PhoenixHBaseAccessor;
 import org.apache.ambari.metrics.core.timeline.aggregators.TimelineClusterMetric;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.metrics2.sink.timeline.MetricHostAggregate;
 
 import java.io.Writer;
@@ -31,7 +31,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class PhoenixClusterMetricsCopier extends AbstractPhoenixMetricsCopier {
-  private static final Log LOG = LogFactory.getLog(PhoenixClusterMetricsCopier.class);
+  private static final Logger LOG = LoggerFactory.getLogger(PhoenixClusterMetricsCopier.class);
   private final Map<TimelineClusterMetric, MetricHostAggregate> aggregateMap = new HashMap<>();
 
   PhoenixClusterMetricsCopier(String inputTableName, String outputTableName, PhoenixHBaseAccessor hBaseAccessor, Set<String> metricNames, long startTime, Writer processedMetricsFileWriter) {

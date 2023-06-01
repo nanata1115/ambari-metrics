@@ -23,11 +23,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Configuration {
-  public final Log LOG = LogFactory.getLog(this.getClass());
+  public final Logger LOG = LoggerFactory.getLogger(this.getClass());
   private final Properties properties;
 
   public Configuration(String configFile) {

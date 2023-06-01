@@ -20,8 +20,8 @@ package org.apache.ambari.metrics.core.timeline;
 
 import org.apache.ambari.metrics.core.timeline.availability.MetricCollectorHAController;
 import org.apache.ambari.metrics.core.timeline.discovery.TimelineMetricMetadataManager;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -42,7 +42,7 @@ public class TimelineMetricServiceSummary {
   private Date timestamp;
   private Map<String, String> metadataSummary = new HashMap<>();
   private Map<String, String> aggregationSummary = new HashMap<>();
-  static final Log LOG = LogFactory.getLog(TimelineMetricServiceSummary.class);
+  static final Logger LOG = LoggerFactory.getLogger(TimelineMetricServiceSummary.class);
 
   TimelineMetricServiceSummary(TimelineMetricMetadataManager metricMetadataManager,
                                MetricCollectorHAController haController) {

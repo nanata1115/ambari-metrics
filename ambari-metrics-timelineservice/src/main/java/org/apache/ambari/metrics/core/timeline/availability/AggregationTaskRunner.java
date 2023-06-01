@@ -30,8 +30,8 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.apache.ambari.metrics.core.timeline.aggregators.TimelineMetricAggregator;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.helix.HelixManager;
 import org.apache.helix.HelixManagerFactory;
 import org.apache.helix.InstanceType;
@@ -42,7 +42,7 @@ public class AggregationTaskRunner {
   private final String zkAddress;
   private final String clusterName;
   private HelixManager manager;
-  private static final Log LOG = LogFactory.getLog(AggregationTaskRunner.class);
+  private static final Logger LOG = LoggerFactory.getLogger(AggregationTaskRunner.class);
   private CheckpointManager checkpointManager;
   // Map partition name to an aggregator dimension
   static final Map<String, TimelineMetricAggregator.AGGREGATOR_TYPE> PARTITION_AGGREGATION_TYPES = new HashMap<>();

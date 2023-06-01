@@ -20,15 +20,15 @@ package org.apache.ambari.metrics.core.timeline.availability;
 import static org.apache.ambari.metrics.core.timeline.availability.AggregationTaskRunner.PARTITION_AGGREGATION_TYPES;
 
 import org.apache.ambari.metrics.core.timeline.aggregators.TimelineMetricAggregator;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.helix.NotificationContext;
 import org.apache.helix.model.Message;
 import org.apache.helix.participant.statemachine.StateModel;
 import org.apache.helix.participant.statemachine.StateModelFactory;
 
 public class OnlineOfflineStateModelFactory extends StateModelFactory<StateModel> {
-  private static final Log LOG = LogFactory.getLog(OnlineOfflineStateModelFactory.class);
+  private static final Logger LOG = LoggerFactory.getLogger(OnlineOfflineStateModelFactory.class);
   private final String instanceName;
   private final AggregationTaskRunner taskRunner;
 

@@ -50,8 +50,8 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.metrics2.sink.timeline.MetadataException;
 import org.apache.hadoop.metrics2.sink.timeline.TimelineMetric;
@@ -74,7 +74,7 @@ import static org.apache.hadoop.metrics2.sink.timeline.TimelineMetricUtils.getJa
 import static org.apache.hadoop.metrics2.sink.timeline.TimelineMetricUtils.getJavaRegexFromSqlRegex;
 
 public class TimelineMetricMetadataManager {
-  private static final Log LOG = LogFactory.getLog(TimelineMetricMetadataManager.class);
+  private static final Logger LOG = LoggerFactory.getLogger(TimelineMetricMetadataManager.class);
   // Cache all metadata on retrieval
   private final Map<TimelineMetricMetadataKey, TimelineMetricMetadata> METADATA_CACHE = new ConcurrentHashMap<>();
   private final Map<TimelineMetricUuid, TimelineMetricMetadataKey> uuidKeyMap = new ConcurrentHashMap<>();

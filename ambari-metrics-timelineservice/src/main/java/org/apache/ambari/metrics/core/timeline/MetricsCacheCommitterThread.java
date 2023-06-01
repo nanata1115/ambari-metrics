@@ -17,12 +17,12 @@
  */
 package org.apache.ambari.metrics.core.timeline;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class MetricsCacheCommitterThread implements Runnable {
 
-    private static final Log LOG = LogFactory.getLog(MetricsCacheCommitterThread.class);
+    private static final Logger LOG = LoggerFactory.getLogger(MetricsCacheCommitterThread.class);
     private static PhoenixHBaseAccessor phoenixHBaseAccessor;
 
     public MetricsCacheCommitterThread(PhoenixHBaseAccessor phoenixHBaseAccessor) {

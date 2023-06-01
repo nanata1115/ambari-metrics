@@ -19,8 +19,8 @@
 package org.apache.ambari.metrics.core.timeline.aggregators;
 
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,7 +34,7 @@ import static org.apache.ambari.metrics.core.timeline.query.PhoenixTransactSQL.M
 public class EventMetricDownSampler implements CustomDownSampler{
 
   private String metricPatterns = "";
-  private static final Log LOG = LogFactory.getLog(EventMetricDownSampler.class);
+  private static final Logger LOG = LoggerFactory.getLogger(EventMetricDownSampler.class);
 
   public static EventMetricDownSampler fromConfig(Map<String, String> conf) {
     String metricPatterns = conf.get(DownSamplerUtils.downSamplerConfigPrefix + DownSamplerUtils.eventDownSamplerKey + "." +

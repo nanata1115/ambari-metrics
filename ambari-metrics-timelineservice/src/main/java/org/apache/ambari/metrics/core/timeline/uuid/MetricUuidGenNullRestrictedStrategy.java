@@ -18,15 +18,15 @@
 package org.apache.ambari.metrics.core.timeline.uuid;
 
 import org.apache.ambari.metrics.core.timeline.aggregators.TimelineClusterMetric;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * HBase represents null value for BINARY fields as set of zero bytes. This means that we are not able to difference
  * byte[]{0,0,0,0} and null values in DB. So we should not generate Uuids which contains only zero bytes.
  */
 public abstract class MetricUuidGenNullRestrictedStrategy implements MetricUuidGenStrategy {
-  private static final Log LOG = LogFactory.getLog(MetricUuidGenNullRestrictedStrategy.class);
+  private static final Logger LOG = LoggerFactory.getLogger(MetricUuidGenNullRestrictedStrategy.class);
 
   static final int RETRY_NUMBER = 5;
 

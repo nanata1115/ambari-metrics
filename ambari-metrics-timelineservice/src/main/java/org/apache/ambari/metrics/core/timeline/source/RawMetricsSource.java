@@ -27,13 +27,13 @@ import java.util.concurrent.TimeoutException;
 
 import org.apache.ambari.metrics.core.timeline.sink.ExternalMetricsSink;
 import org.apache.ambari.metrics.core.timeline.source.cache.InternalMetricsCacheProvider;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.metrics2.sink.timeline.TimelineMetrics;
 import org.apache.ambari.metrics.core.timeline.source.cache.InternalMetricsCache;
 
 public class RawMetricsSource implements InternalMetricsSource {
-  private static final Log LOG = LogFactory.getLog(RawMetricsSource.class);
+  private static final Logger LOG = LoggerFactory.getLogger(RawMetricsSource.class);
   private final int internalCacheInterval;
   private final ExternalMetricsSink rawMetricsSink;
   private final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();

@@ -55,8 +55,8 @@ import org.apache.ambari.metrics.core.timeline.query.TopNCondition;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.metrics2.sink.timeline.AggregationResult;
 import org.apache.hadoop.metrics2.sink.timeline.ContainerMetric;
@@ -76,7 +76,7 @@ import com.google.common.collect.Multimap;
 
 public class HBaseTimelineMetricsService extends AbstractService implements TimelineMetricStore {
 
-  static final Log LOG = LogFactory.getLog(HBaseTimelineMetricsService.class);
+  static final Logger LOG = LoggerFactory.getLogger(HBaseTimelineMetricsService.class);
   private final TimelineMetricConfiguration configuration;
   private TimelineMetricDistributedCache cache;
   private PhoenixHBaseAccessor hBaseAccessor;
@@ -132,7 +132,7 @@ public class HBaseTimelineMetricsService extends AbstractService implements Time
         try {
           haController.initializeHAController();
         } catch (Exception e) {
-          LOG.error(e);
+          LOG.error(String.valueOf(e));
           throw new MetricsSystemInitializationException("Unable to " +
             "initialize HA controller", e);
         }

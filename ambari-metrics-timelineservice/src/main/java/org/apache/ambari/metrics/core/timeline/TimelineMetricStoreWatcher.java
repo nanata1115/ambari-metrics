@@ -25,8 +25,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.metrics2.sink.timeline.Precision;
 import org.apache.hadoop.metrics2.sink.timeline.TimelineMetric;
 import org.apache.hadoop.metrics2.sink.timeline.TimelineMetrics;
@@ -37,7 +37,7 @@ import org.apache.hadoop.util.ExitUtil;
  */
 public class TimelineMetricStoreWatcher implements Runnable {
 
-  private static final Log LOG = LogFactory.getLog(TimelineMetricStoreWatcher.class);
+  private static final Logger LOG = LoggerFactory.getLogger(TimelineMetricStoreWatcher.class);
   private static final String FAKE_METRIC_NAME = "TimelineMetricStoreWatcher.FakeMetric";
   private static final String FAKE_HOSTNAME = "fakehostname";
   private static final String FAKE_APP_ID = "timeline_metric_store_watcher";
@@ -72,7 +72,7 @@ public class TimelineMetricStoreWatcher implements Runnable {
     if (failures >= configuration.getTimelineMetricsServiceWatcherMaxFailures()) {
       String msg = "Error getting metrics from TimelineMetricStore. " +
         "Shutting down by TimelineMetricStoreWatcher.";
-      LOG.fatal(msg);
+      LOG.error(msg);
       ExitUtil.terminate(-1, msg);
     }
 

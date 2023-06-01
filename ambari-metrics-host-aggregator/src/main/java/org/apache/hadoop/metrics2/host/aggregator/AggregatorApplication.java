@@ -36,8 +36,8 @@ import java.util.List;
 import com.sun.net.httpserver.HttpsConfigurator;
 import com.sun.net.httpserver.HttpsServer;
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.metrics2.sink.timeline.AbstractMetricPublisher;
 import org.apache.hadoop.metrics2.sink.timeline.AggregatedMetricsPublisher;
@@ -54,7 +54,7 @@ public class AggregatorApplication {
   private static final int JOIN_SECONDS_TIMEOUT = 5;
   private static final String METRICS_SITE_CONFIGURATION_FILE = "ams-site.xml";
   private static final String METRICS_SSL_SERVER_CONFIGURATION_FILE = "ssl-server.xml";
-  private Log LOG;
+  private Logger LOG;
   private final int webApplicationPort;
   private final int rawPublishingInterval;
   private final int aggregationInterval;
@@ -66,7 +66,7 @@ public class AggregatorApplication {
   private HttpServer httpServer;
 
   public AggregatorApplication(String hostname, String collectorHosts) {
-    LOG = LogFactory.getLog(this.getClass());
+    LOG = LoggerFactory.getLogger(this.getClass());
     configuration = new Configuration(true);
     initConfiguration();
     configuration.set("timeline.metrics.collector.hosts", collectorHosts);
@@ -133,7 +133,7 @@ public class AggregatorApplication {
     try {
       hostName = InetAddress.getLocalHost().getCanonicalHostName();
     } catch (UnknownHostException e) {
-      LOG.error(e);
+      LOG.error(String.valueOf(e));
     }
     return hostName;
   }

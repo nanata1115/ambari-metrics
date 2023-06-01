@@ -74,7 +74,7 @@ limitations under the License.
               <include>org.codehaus.jackson:jackson-core-asl</include>
               <include>org.codehaus.jackson:jackson-xc</include>
               <include>org.apache.hadoop:hadoop-annotations</include>
-              <include>commons-logging:commons-logging</include>
+              <include>org.slf4j:slf4j-api</include>
               <include>org.apache.commons:commons-lang3</include>
               <include>commons-codec:commons-codec</include>
             </includes>

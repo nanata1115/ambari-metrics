@@ -26,8 +26,8 @@ import java.util.concurrent.TimeUnit;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.ClassUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.metrics2.sink.timeline.AbstractTimelineMetricsSink;
 import org.apache.hadoop.metrics2.sink.timeline.TimelineMetric;
 import org.apache.hadoop.metrics2.sink.timeline.TimelineMetrics;
@@ -54,7 +54,7 @@ import static org.apache.hadoop.metrics2.sink.timeline.cache.TimelineMetricsCach
 public class KafkaTimelineMetricsReporter extends AbstractTimelineMetricsSink
     implements KafkaMetricsReporter, KafkaTimelineMetricsReporterMBean {
 
-  private final static Log LOG = LogFactory.getLog(KafkaTimelineMetricsReporter.class);
+  private final static Logger LOG = LoggerFactory.getLogger(KafkaTimelineMetricsReporter.class);
 
   private static final String TIMELINE_METRICS_KAFKA_PREFIX = "kafka.timeline.metrics.";
   private static final String TIMELINE_METRICS_SEND_INTERVAL_PROPERTY = "sendInterval";

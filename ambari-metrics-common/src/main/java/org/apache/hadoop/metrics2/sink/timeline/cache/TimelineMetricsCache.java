@@ -17,8 +17,8 @@
  */
 package org.apache.hadoop.metrics2.sink.timeline.cache;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.classification.InterfaceAudience;
 import org.apache.hadoop.classification.InterfaceStability;
 import org.apache.hadoop.metrics2.sink.timeline.TimelineMetric;
@@ -37,7 +37,7 @@ import java.util.concurrent.ConcurrentSkipListMap;
 public class TimelineMetricsCache {
 
   private final TimelineMetricHolder timelineMetricCache = new TimelineMetricHolder();
-  private static final Log LOG = LogFactory.getLog(TimelineMetric.class);
+  private static final Logger LOG = LoggerFactory.getLogger(TimelineMetric.class);
   public static final int MAX_RECS_PER_NAME_DEFAULT = 10000;
   public static final int MAX_EVICTION_TIME_MILLIS = 59000; // ~ 1 min
   private final int maxRecsPerName;

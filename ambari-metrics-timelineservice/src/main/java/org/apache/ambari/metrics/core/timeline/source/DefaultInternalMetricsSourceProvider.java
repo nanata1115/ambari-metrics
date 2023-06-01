@@ -18,11 +18,11 @@
 package org.apache.ambari.metrics.core.timeline.source;
 
 import org.apache.ambari.metrics.core.timeline.sink.ExternalMetricsSink;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class DefaultInternalMetricsSourceProvider implements InternalSourceProvider {
-  private static final Log LOG = LogFactory.getLog(DefaultInternalMetricsSourceProvider.class);
+  private static final Logger LOG = LoggerFactory.getLogger(DefaultInternalMetricsSourceProvider.class);
 
   // TODO: Implement read based sources for higher order data
   @Override

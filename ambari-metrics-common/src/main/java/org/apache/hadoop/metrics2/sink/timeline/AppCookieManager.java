@@ -24,8 +24,8 @@ import java.security.Principal;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.http.Header;
 import org.apache.http.HeaderElement;
 import org.apache.http.HttpEntity;
@@ -58,7 +58,7 @@ public class AppCookieManager {
   private static final EmptyJaasCredentials EMPTY_JAAS_CREDENTIALS = new EmptyJaasCredentials();
 
   private Map<String, String> endpointCookieMap = new ConcurrentHashMap<String, String>();
-  private static Log LOG = LogFactory.getLog(AppCookieManager.class);
+  private static Logger LOG = LoggerFactory.getLogger(AppCookieManager.class);
 
   /**
    * Utility method to exercise AppCookieManager directly

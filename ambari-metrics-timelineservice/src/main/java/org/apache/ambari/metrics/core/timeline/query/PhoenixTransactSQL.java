@@ -26,8 +26,8 @@ import java.util.regex.Pattern;
 
 import org.apache.ambari.metrics.core.timeline.TimelineMetricConfiguration;
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.metrics2.sink.timeline.Precision;
 import org.apache.hadoop.metrics2.sink.timeline.PrecisionLimitExceededException;
 import org.apache.ambari.metrics.core.timeline.PhoenixHBaseAccessor;
@@ -39,7 +39,7 @@ import static org.apache.ambari.metrics.core.timeline.PhoenixHBaseAccessor.RESUL
  */
 public class PhoenixTransactSQL {
 
-  public static final Log LOG = LogFactory.getLog(PhoenixTransactSQL.class);
+  public static final Logger LOG = LoggerFactory.getLogger(PhoenixTransactSQL.class);
 
   /**
    * Create table to store individual metric records.

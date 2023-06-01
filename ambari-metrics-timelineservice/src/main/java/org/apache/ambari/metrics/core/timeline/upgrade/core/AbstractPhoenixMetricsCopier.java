@@ -18,8 +18,8 @@
 package org.apache.ambari.metrics.core.timeline.upgrade.core;
 
 import org.apache.ambari.metrics.core.timeline.PhoenixHBaseAccessor;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.metrics2.sink.timeline.MetricHostAggregate;
 
 import java.io.IOException;
@@ -31,7 +31,7 @@ import java.sql.SQLException;
 import java.util.Set;
 
 public abstract class AbstractPhoenixMetricsCopier implements Runnable {
-  private static final Log LOG = LogFactory.getLog(AbstractPhoenixMetricsCopier.class);
+  private static final Logger LOG = LoggerFactory.getLogger(AbstractPhoenixMetricsCopier.class);
   private static final long DEFAULT_NATIVE_TIME_RANGE_DELAY = 120000L;
   private final long startTime;
   protected final Writer processedMetricsFile;
@@ -62,7 +62,7 @@ public abstract class AbstractPhoenixMetricsCopier implements Runnable {
     try {
       saveMetrics();
     } catch (SQLException e) {
-      LOG.error(e);
+      LOG.error(String.valueOf(e));
     } finally {
       long timerDelta = System.currentTimeMillis() - timerStart;
       LOG.debug(String.format("Copying took %s seconds from table %s to table %s for metric names %s", timerDelta/ 1000.0, inputTable, outputTable, metricNames));
@@ -119,7 +119,7 @@ public abstract class AbstractPhoenixMetricsCopier implements Runnable {
         this.processedMetricsFile.append(inputTable).append(":").append(metricName).append(System.lineSeparator());
         }
       } catch (IOException e) {
-        LOG.error(e);
+        LOG.error(String.valueOf(e));
       }
     }
   }

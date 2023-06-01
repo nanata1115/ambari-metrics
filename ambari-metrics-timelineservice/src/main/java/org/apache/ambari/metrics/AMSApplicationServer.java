@@ -18,8 +18,9 @@
 
 package org.apache.ambari.metrics;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.http.HttpConfig;
 import org.apache.hadoop.metrics2.lib.DefaultMetricsSystem;
@@ -46,7 +47,7 @@ import static org.apache.hadoop.http.HttpServer2.HTTP_MAX_THREADS_KEY;
 public class AMSApplicationServer extends CompositeService {
 
   public static final int SHUTDOWN_HOOK_PRIORITY = 30;
-  private static final Log LOG = LogFactory.getLog(AMSApplicationServer.class);
+  private static final Logger LOG = LoggerFactory.getLogger(AMSApplicationServer.class);
 
   TimelineMetricStore timelineMetricStore;
   private WebApp webApp;
@@ -97,7 +98,7 @@ public class AMSApplicationServer extends CompositeService {
       amsApplicationServer.init(conf);
       amsApplicationServer.start();
     } catch (Throwable t) {
-      LOG.fatal("Error starting AMSApplicationServer", t);
+      LOG.error("Error starting AMSApplicationServer", t);
       ExitUtil.terminate(-1, "Error starting AMSApplicationServer");
     }
     return amsApplicationServer;

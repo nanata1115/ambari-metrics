@@ -17,8 +17,8 @@
  */
 package org.apache.hadoop.metrics2.sink.timeline.availability;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.curator.CuratorZookeeperClient;
 import org.apache.curator.RetryLoop;
 import org.apache.curator.RetryPolicy;
@@ -50,7 +50,7 @@ public class MetricCollectorHAHelper {
 
 
 
-  private static final Log LOG = LogFactory.getLog(MetricCollectorHAHelper.class);
+  private static final Logger LOG = LoggerFactory.getLogger(MetricCollectorHAHelper.class);
 
   public MetricCollectorHAHelper(String zookeeperConnectionURL, int tryCount, int sleepMsBetweenRetries) {
     this.zookeeperConnectionURL = zookeeperConnectionURL;
@@ -88,7 +88,7 @@ public class MetricCollectorHAHelper {
       });
     } catch (Exception e) {
       LOG.warn("Unable to connect to zookeeper.", e);
-      LOG.debug(e);
+      LOG.debug(String.valueOf(e));
     } finally {
       try {
         client.close();

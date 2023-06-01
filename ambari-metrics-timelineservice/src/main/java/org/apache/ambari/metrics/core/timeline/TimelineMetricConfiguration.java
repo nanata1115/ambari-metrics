@@ -45,22 +45,20 @@ import java.util.Set;
 
 import org.apache.ambari.metrics.core.timeline.source.InternalSourceProvider;
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.util.ReflectionUtils;
 import org.apache.ambari.metrics.core.timeline.sink.ExternalSinkProvider;
 import org.apache.ambari.metrics.core.timeline.source.DefaultInternalMetricsSourceProvider;
 import org.apache.log4j.Appender;
 import org.apache.log4j.FileAppender;
-import org.apache.log4j.Logger;
 
 /**
  * Configuration class that reads properties from ams-site.xml. All values
  * for time or intervals are given in seconds.
  */
 public class TimelineMetricConfiguration {
-  private static final Log LOG = LogFactory.getLog(TimelineMetricConfiguration.class);
+  private static final org.slf4j.Logger LOG = LoggerFactory.getLogger(TimelineMetricConfiguration.class);
 
   public static final String HBASE_SITE_CONFIGURATION_FILE = "hbase-site.xml";
   public static final String METRICS_SITE_CONFIGURATION_FILE = "ams-site.xml";
@@ -641,7 +639,7 @@ public class TimelineMetricConfiguration {
     String dirPath = metricsConf.get(DEFAULT_EXTERNAL_SINK_DIR);
     if (dirPath == null) {
       // Only one logger at the time of writing
-      Appender appender = (Appender) Logger.getRootLogger().getAllAppenders().nextElement();
+      Appender appender = (Appender) org.apache.log4j.Logger.getRootLogger().getAllAppenders().nextElement();
       if (appender instanceof FileAppender) {
         File f = new File(((FileAppender) appender).getFile());
         if (f.exists()) {

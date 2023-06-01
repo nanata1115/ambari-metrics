@@ -19,8 +19,8 @@ package org.apache.hadoop.metrics2.sink.timeline;
 
 
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.metrics2.host.aggregator.TimelineMetricsHolder;
 
@@ -35,11 +35,11 @@ import java.util.TreeMap;
  */
 public class AggregatedMetricsPublisher extends AbstractMetricPublisher {
     private static String AGGREGATED_POST_PREFIX = "/aggregated";
-    private Log LOG;
+    private Logger LOG;
 
     public AggregatedMetricsPublisher(TimelineMetricsHolder timelineMetricsHolder, Configuration configuration, int interval) {
         super(timelineMetricsHolder, configuration, interval);
-        LOG = LogFactory.getLog(this.getClass());
+        LOG = LoggerFactory.getLogger(this.getClass());
     }
 
     /**

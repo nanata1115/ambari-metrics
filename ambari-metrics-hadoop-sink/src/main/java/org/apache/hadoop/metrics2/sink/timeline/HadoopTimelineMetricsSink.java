@@ -91,7 +91,7 @@ public class HadoopTimelineMetricsSink extends AbstractTimelineMetricsSink imple
             conf.getString("dfs.datanode.dns.interface", "default"),
             conf.getString("dfs.datanode.dns.nameserver", "default"));
       } catch (UnknownHostException uhe) {
-        LOG.error(uhe);
+        LOG.error(String.valueOf(uhe));
         hostName = "UNKNOWN.example.com";
       }
     }
@@ -434,7 +434,7 @@ public class HadoopTimelineMetricsSink extends AbstractTimelineMetricsSink imple
       }
     }
     if (LOG.isDebugEnabled()) {
-      LOG.debug(containerMetric);
+      LOG.debug(String.valueOf(containerMetric));
     }
   }
 

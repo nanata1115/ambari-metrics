@@ -24,8 +24,8 @@ import org.apache.ambari.metrics.core.timeline.TimelineMetricConfiguration;
 import org.apache.ambari.metrics.core.timeline.discovery.TimelineMetricMetadataKey;
 import org.apache.ambari.metrics.core.timeline.discovery.TimelineMetricMetadataManager;
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.conf.Configuration;
 
 
@@ -69,7 +69,7 @@ import static org.apache.ambari.metrics.core.timeline.query.PhoenixTransactSQL.M
 import static org.apache.ambari.metrics.core.timeline.query.PhoenixTransactSQL.METRICS_CLUSTER_AGGREGATE_MINUTE_V1_TABLE_NAME;
 
 public class MetricsDataMigrationLauncher {
-  private static final Log LOG = LogFactory.getLog(MetricsDataMigrationLauncher.class);
+  private static final Logger LOG = LoggerFactory.getLogger(MetricsDataMigrationLauncher.class);
   private static final Long DEFAULT_TIMEOUT_MINUTES = 60*24L;
   private static final String PATTERN_PREFIX = "._p_";
   private static final int DEFAULT_BATCH_SIZE = 5;
@@ -183,7 +183,7 @@ public class MetricsDataMigrationLauncher {
           });
         }
       } catch (IOException e) {
-        LOG.error(e);
+        LOG.error(String.valueOf(e));
       }
     }
     this.processedMetrics = result;
@@ -230,7 +230,7 @@ public class MetricsDataMigrationLauncher {
           try {
             executorService.awaitTermination(timeoutInMinutes, TimeUnit.MINUTES);
           } catch (InterruptedException e) {
-            LOG.error(e);
+            LOG.error(String.valueOf(e));
           }
         }
       }
@@ -283,7 +283,7 @@ public class MetricsDataMigrationLauncher {
         whitelistedMetrics.add(strLine);
       }
     } catch (IOException ioEx) {
-      LOG.error(ioEx);
+      LOG.error(String.valueOf(ioEx));
     }
     return whitelistedMetrics;
   }

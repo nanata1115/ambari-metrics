@@ -26,15 +26,15 @@ import org.apache.ambari.metrics.core.timeline.TimelineMetricConfiguration;
 import org.apache.ambari.metrics.core.timeline.source.InternalSourceProvider;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.metrics2.sink.timeline.TimelineMetric;
 import org.apache.hadoop.metrics2.sink.timeline.TimelineMetrics;
 
 import static org.apache.ambari.metrics.core.timeline.TimelineMetricConfiguration.TIMELINE_METRICS_CACHE_COMMIT_INTERVAL;
 
 public class DefaultFSSinkProvider implements ExternalSinkProvider {
-  private static final Log LOG = LogFactory.getLog(DefaultFSSinkProvider.class);
+  private static final Logger LOG = LoggerFactory.getLogger(DefaultFSSinkProvider.class);
   TimelineMetricConfiguration conf = TimelineMetricConfiguration.getInstance();
   private final DefaultExternalMetricsSink sink = new DefaultExternalMetricsSink();
   private long FIXED_FILE_SIZE;

@@ -36,8 +36,8 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManagerFactory;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.metrics2.sink.timeline.TimelineMetrics;
 import org.apache.ambari.metrics.core.timeline.TimelineMetricConfiguration;
@@ -49,7 +49,7 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.xc.JaxbAnnotationIntrospector;
 
 public class HttpSinkProvider implements ExternalSinkProvider {
-  private static final Log LOG = LogFactory.getLog(HttpSinkProvider.class);
+  private static final Logger LOG = LoggerFactory.getLogger(HttpSinkProvider.class);
   TimelineMetricConfiguration conf = TimelineMetricConfiguration.getInstance();
 
   private String connectUrl;
