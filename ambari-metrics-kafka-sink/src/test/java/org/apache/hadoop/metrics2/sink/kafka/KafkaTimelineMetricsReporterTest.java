@@ -27,7 +27,7 @@ import com.yammer.metrics.core.Metric;
 import com.yammer.metrics.core.MetricsRegistry;
 import com.yammer.metrics.core.Timer;
 import junit.framework.Assert;
-import kafka.metrics.KafkaYammerMetrics;
+import org.apache.kafka.server.metrics.KafkaYammerMetrics;
 import kafka.utils.VerifiableProperties;
 import org.apache.hadoop.metrics2.sink.timeline.TimelineMetric;
 import org.apache.hadoop.metrics2.sink.timeline.cache.TimelineMetricsCache;
