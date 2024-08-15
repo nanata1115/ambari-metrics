@@ -192,5 +192,11 @@ limitations under the License.
       <artifactId>mockito-all</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>ch.qos.reload4j</groupId>
+      <artifactId>reload4j</artifactId>
+      <version>1.2.24</version>
+      <scope>compile</scope>
+    </dependency>
   </dependencies>
 </project>
